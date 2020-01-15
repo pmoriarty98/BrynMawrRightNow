@@ -1,0 +1,9 @@
+    open(L) close(L) open(D) close(D)
+Mon 12:00pm 4:00pm 4:00pm 8:00pm
+Tue 12:00pm 4:00pm 4:00pm 8:00pm
+Wed 12:00pm 4:00pm 4:00pm 8:00pm
+Thu 12:00pm 4:00pm 4:00pm 8:00pm
+Fri 12:00pm 4:00pm 4:00pm 8:00pm
+Sat 11:00am 1:30pm 4:00pm 6:30pm
+Sun 11:00am 1:30pm 4:00pm 6:30pm
+

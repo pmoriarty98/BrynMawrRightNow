@@ -1,0 +1,8 @@
+       open(d) close(d)	open(n) close(n)
+Mon 8:00am 5:00pm 8:00pm 12:00am
+Tue 8:00am 5:00pm 8:00pm 12:00am
+Wed 8:00am 5:00pm 8:00pm 12:00am
+Thu 8:00am 5:00pm 8:00pm 12:00am
+Fri 8:00am 5:00pm 8:00pm 12:00am
+Sat 12:00pm 4:00pm 8:00pm 12:00am
+Sun 12:00pm 4:00pm 8:00pm 12:00am

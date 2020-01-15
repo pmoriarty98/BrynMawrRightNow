@@ -1,0 +1,8 @@
+    Open Close 
+Mon 7:00am 10:00pm
+Tue 7:00am 10:00pm
+Wed 7:00am 10:00pm
+Thu 7:00am 10:00pm
+Fri 7:00am 8:00pm
+Sat 10:00am 5:00pm
+Sun 10:00am 5:00pm
