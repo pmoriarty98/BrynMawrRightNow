@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 // Mon: 0, Tue: 1, Wed: 2, Thur: 3, Fri: 4, Sat: 5, Sun: 6
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         erdman = newSchedule("Erdman.txt");
         newdorm = newSchedule("Newdorm.txt");
         gym = newSchedule("gym.txt");
+        TextView displayTimeNow = (TextView) findViewById(R.id.currentTime);
+        Date date = java.util.Calendar.getInstance().getTime();
+        String timeText = "" + date;
+        displayTimeNow.setText(timeText);
         changeTimeText(null);
     }
 
@@ -117,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
             if(timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
                     (timeOfDay.compareTo(thisDayTimes.get(i+1)) < 0
                             || thisDayTimes.get(i+1).compareTo(midnight) == 0)){
-                view.setText(" is open until " + thisDayTimes.get(i+1));
+                view.setText(" is OPEN until " + thisDayTimes.get(i+1));
                 return;
             }
         }
         //if not open, on the current day, find the next open time
         if(timeOfDay.compareTo(thisDayTimes.get(0)) < 0){
-            view.setText(" is closed. Will be open at: " + thisDayTimes.get(0));
+            view.setText(" is CLOSED. Will be open at: " + thisDayTimes.get(0));
             return;
         }
         for(int i=1; i<thisDayTimes.size(); i = i+2){
@@ -131,14 +136,14 @@ public class MainActivity extends AppCompatActivity {
                 if (timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
                         (timeOfDay.compareTo(thisDayTimes.get(i + 1)) < 0
                                 || thisDayTimes.get(i + 1).compareTo(midnight) == 0)) {
-                    view.setText(" is closed. Will be open TODAY at: " + thisDayTimes.get(i + 1));
+                    view.setText(" is CLOSED. Will be open TODAY at: " + thisDayTimes.get(i + 1));
                     return;
                 }
             }
         }
         // if not open, and the next opening is on the next day
         ArrayList<String> nextDayTimes = schedule.get(day+1);
-        view.setText(" is closed. Will be open TOMORROW at: " + nextDayTimes.get(0));
+        view.setText(" is CLOSED. Will be open TOMORROW at: " + nextDayTimes.get(0));
         return;
     }
 
@@ -166,15 +171,6 @@ public class MainActivity extends AppCompatActivity {
         isOpen(erdmanView, erdman);
         isOpen(newdormView, newdorm);
         isOpen(gymView, gym);
-
-//        boolean openUncommon = isOpen(uncommonView, uncommon);
-//        boolean openBookstore = isOpen(bookstoreView, bookstore);
-//        boolean openCanaday = isOpen(canadayView, canaday);
-//        boolean openCarpenter = isOpen(carpenterView, carpenter);
-//        boolean openCollier = isOpen(collierView, collier);
-//        boolean openErdman = isOpen(erdmanView, erdman);
-//        boolean openNewdorm = isOpen(newdormView, newdorm);
-//        boolean openGym = isOpen(gymView, gym);
     }
 
     private String timeNow(){ // work for later: we only want the day of the week and time
