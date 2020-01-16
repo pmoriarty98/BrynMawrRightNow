@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setup();
+    }
+
+    private void setup() {
         uncommon = newSchedule("uncommon.txt");
         bookstore = newSchedule("Bookstore.txt");
         canaday = newSchedule("Canaday.txt");
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         newdorm = newSchedule("Newdorm.txt");
         gym = newSchedule("gym.txt");
         TextView displayTimeNow = (TextView) findViewById(R.id.currentTime);
-        Date date = java.util.Calendar.getInstance().getTime();
+        Date date = Calendar.getInstance().getTime();
         String timeText = "" + date;
         displayTimeNow.setText(timeText);
         changeTimeText(null);
@@ -204,4 +209,10 @@ public class MainActivity extends AppCompatActivity {
         return result;
         // writes String in format Tues 14:45 -> "1 14:45"
     }
+
+    public void refresh(View view){
+        setup();
+    }
+
+
 }
