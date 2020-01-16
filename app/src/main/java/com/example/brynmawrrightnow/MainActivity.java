@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         String result = ""; //store next 3 buses times
         for(int i = 0; i < thisDayTimes.size(); i++){
             if(timeOfDay.compareTo(thisDayTimes.get(i)) <= 0){
-                result = result + thisDayTimes.get(i)+ "\n";
+                result = result + toRegularTime(thisDayTimes.get(i))+ "\n";
                 counter++;
                 if(counter == 3){
                     result = result.substring(0, result.length()-1);
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         if(counter < 3){
             for(int i = 0; i < nextDayTimes.size(); i++){
                 if(timeOfDay.compareTo(nextDayTimes.get(i)) <= 0){
-                    result = result + nextDayTimes.get(i)+ "\n";
+                    result = result + toRegularTime(nextDayTimes.get(i))+ "\n";
                     counter++;
                     if(counter == 3){
                         result = result.substring(0, result.length()-1);
