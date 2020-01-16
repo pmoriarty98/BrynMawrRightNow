@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">BrynMawrRightNow</string>
     <string name="currentTime">currentTime</string>
+    <string name="BMCtoHAV">Next BMC to Hav Bus: </string>
+    <string name="HAVtoBMC">Next Hav to BMC Bus: </string>
+    <string name="nextHAVbus">nextHavBus</string>
+    <string name="nextBMCbus">nextBMCBus</string>
+    <string name="erdman">Erdman Dining Hall: </string>
+    <string name="newdorm">New Dorm Dining Hall: </string>
+    <string name="uncommon">Uncommon Grounds: </string>
+    <string name="carpenter">Carpenter Library: </string>
+    <string name="canaday">Canaday Library: </string>
+    <string name="collier">Collier Library: </string>
+    <string name="bookstore">Bookstore: </string>
+    <string name="gym">Gym: </string>
+    <string name="TIME">TIME_GOES_HERE </string>
 </resources>

@@ -12,157 +12,259 @@
         android:layout_height="wrap_content"
         android:text="@string/currentTime"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <TextView
         android:id="@+id/BMCtoHAV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next BMC to Hav Bus:"
+        android:text="@string/BMCtoHAV"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
         android:id="@+id/HAVtoBMC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Hav to BMC Bus:"
+        android:text="@string/HAVtoBMC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
         android:id="@+id/nextHavBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:text="nextHavBus"
+        android:text="@string/nextHAVbus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BMCtoHAV"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
         android:id="@+id/nextBMCBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:text="nextBMCBus"
+        android:text="@string/nextBMCbus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HAVtoBMC"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <TextView
         android:id="@+id/erdman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Erdman Dining Hall: "
+        android:text="@string/erdman"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextHavBus"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
         android:id="@+id/newdorm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Dorm Dining Hall: "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="@string/newdorm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/erdman"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintTop_toBottomOf="@+id/erdman" />
 
     <TextView
         android:id="@+id/uncommon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Uncommon Grounds: "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="@string/uncommon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newdorm"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/newdorm" />
 
     <TextView
         android:id="@+id/carpenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carpenter Library: "
+        android:layout_marginTop="8dp"
+        android:text="@string/carpenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uncommon"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toBottomOf="@+id/canaday"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:id="@+id/canaday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="296dp"
-        android:text="Canaday Library: "
+        android:layout_marginTop="8dp"
+        android:text="@string/canaday"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carpenter" />
+        app:layout_constraintTop_toBottomOf="@+id/uncommon"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:id="@+id/collier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Collier Library: "
+        android:layout_marginTop="8dp"
+        android:text="@string/collier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/canaday"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintTop_toBottomOf="@+id/carpenter"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:id="@+id/bookstore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bookstore: "
+        android:layout_marginTop="8dp"
+        android:text="@string/bookstore"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collier"
-        app:layout_constraintVertical_bias="0.074" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:id="@+id/gym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gym: "
+        android:layout_marginTop="8dp"
+        android:text="@string/gym"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookstore"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/erdmanText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TIME"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/erdman"
+        app:layout_constraintTop_toBottomOf="@+id/nextHavBus"
+        app:layout_constraintVertical_bias="0.199" />
+
+    <TextView
+        android:id="@+id/newdormText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TIME"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/newdorm"
+        app:layout_constraintTop_toBottomOf="@+id/erdman"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <TextView
+        android:id="@+id/uncommonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TIME"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/uncommon"
+        app:layout_constraintTop_toBottomOf="@+id/newdorm"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <TextView
+        android:id="@+id/canadayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TIME"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/canaday"
+        app:layout_constraintTop_toBottomOf="@+id/uncommon"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/carpenterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/carpenter"
+        app:layout_constraintTop_toBottomOf="@+id/canaday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/collierText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/collier"
+        app:layout_constraintTop_toBottomOf="@+id/carpenter"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bookstoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toEndOf="@+id/bookstore"
+        app:layout_constraintTop_toBottomOf="@+id/collier"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <TextView
+        android:id="@+id/gymText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/gym"
+        app:layout_constraintTop_toBottomOf="@+id/bookstore"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

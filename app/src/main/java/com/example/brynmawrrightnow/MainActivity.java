@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -99,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
         return thisSchedule;
     }
 
-    // return true if time is within the right hours
-    public boolean isOpen(String time, ArrayList<ArrayList<String>> schedule){
+    // isOpen(R.id.uncommon, uncommon);
+    public void isOpen(TextView view, ArrayList<ArrayList<String>> schedule){
         System.out.println("schedule formatted: ");
         for(int i = 0; i < schedule.size(); i++){
             System.out.println(schedule.get(i));
         }
-        String[] timeDetails = time.split("\\s", 0);
+        String[] timeDetails = timeNow().split("\\s", 0);
         int day = Integer.parseInt(timeDetails[0]);
         String timeOfDay = timeDetails[1];
         //System.out.println("timeOfDay: "+ timeOfDay);
@@ -115,44 +117,67 @@ public class MainActivity extends AppCompatActivity {
             if(timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
                     (timeOfDay.compareTo(thisDayTimes.get(i+1)) < 0
                             || thisDayTimes.get(i+1).compareTo(midnight) == 0)){
-                System.out.println("open!");
-                return true;
+                view.setText(" is open until " + thisDayTimes.get(i+1));
+                return;
             }
         }
-        System.out.println("not open!");
-        return false;
-    }
-
-    // return next time the item opens/closes
-    public String nextTime(boolean status, String time, ArrayList<ArrayList<String>> schedule){
-        if(status){ // if the item is open
-
-        } else { // if it is closed
-
+        //if not open, on the current day, find the next open time
+        if(timeOfDay.compareTo(thisDayTimes.get(0)) < 0){
+            view.setText(" is closed. Will be open at: " + thisDayTimes.get(0));
+            return;
         }
-        return "";
+        for(int i=1; i<thisDayTimes.size(); i = i+2){
+            if(i+1 < thisDayTimes.size()) { //take care of the case when the next openning is on next day
+                if (timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
+                        (timeOfDay.compareTo(thisDayTimes.get(i + 1)) < 0
+                                || thisDayTimes.get(i + 1).compareTo(midnight) == 0)) {
+                    view.setText(" is closed. Will be open TODAY at: " + thisDayTimes.get(i + 1));
+                    return;
+                }
+            }
+        }
+        // if not open, and the next opening is on the next day
+        ArrayList<String> nextDayTimes = schedule.get(day+1);
+        view.setText(" is closed. Will be open TOMORROW at: " + nextDayTimes.get(0));
+        return;
     }
+
+    // view.getText().toString()+
 
     //function to change text according to when it closes or when it opens again
     public void changeTimeText(View view){
         String ourTime = timeNow();
         //System.out.println(ourTime);
-        boolean openUncommon = isOpen(ourTime, uncommon);
-        boolean openBookstore = isOpen(ourTime, bookstore);
-        boolean openCanaday = isOpen(ourTime, canaday);
-        boolean openCarpenter = isOpen(ourTime, carpenter);
-        boolean openCollier = isOpen(ourTime, collier);
-        boolean openErdman = isOpen(ourTime, erdman);
-        boolean openNewdorm = isOpen(ourTime, newdorm);
-        boolean openGym = isOpen(ourTime, gym);
-        // if booleans are true, edit the text
+        ArrayList<Boolean> opens = new ArrayList<>();
+        TextView uncommonView = (TextView) findViewById(R.id.uncommonText);
+        TextView bookstoreView = (TextView) findViewById(R.id.bookstoreText);
+        TextView canadayView = (TextView) findViewById(R.id.canadayText);
+        TextView carpenterView = (TextView) findViewById(R.id.carpenterText);
+        TextView collierView = (TextView) findViewById(R.id.collierText);
+        TextView erdmanView = (TextView) findViewById(R.id.erdmanText);
+        TextView newdormView = (TextView) findViewById(R.id.newdormText);
+        TextView gymView = (TextView) findViewById(R.id.gymText);
+
+        isOpen(uncommonView, uncommon);
+        isOpen(bookstoreView, bookstore);
+        isOpen(canadayView, canaday);
+        isOpen(carpenterView, carpenter);
+        isOpen(collierView, collier);
+        isOpen(erdmanView, erdman);
+        isOpen(newdormView, newdorm);
+        isOpen(gymView, gym);
+
+//        boolean openUncommon = isOpen(uncommonView, uncommon);
+//        boolean openBookstore = isOpen(bookstoreView, bookstore);
+//        boolean openCanaday = isOpen(canadayView, canaday);
+//        boolean openCarpenter = isOpen(carpenterView, carpenter);
+//        boolean openCollier = isOpen(collierView, collier);
+//        boolean openErdman = isOpen(erdmanView, erdman);
+//        boolean openNewdorm = isOpen(newdormView, newdorm);
+//        boolean openGym = isOpen(gymView, gym);
     }
 
     private String timeNow(){ // work for later: we only want the day of the week and time
-        //long timeInt = System.currentTimeMillis();
-        //java.util.Date date = new java.util.Date(timeInt);
-        //System.out.println("current time: ");
-        //System.out.println(date);
 
         String result;
         Calendar rightNow = Calendar.getInstance();
