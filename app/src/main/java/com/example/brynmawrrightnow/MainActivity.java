@@ -55,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
         TextView displayTimeNow = (TextView) findViewById(R.id.currentTime);
         Date date = Calendar.getInstance().getTime();
         String timeText = "" + date;
-        displayTimeNow.setText(timeText);
+        String[] datePieces = timeText.split("\\s",0);
+        // take the first five characters and regularize
+        String simplifiedTime = toRegularTime(datePieces[3].substring(0,5));
+        System.out.println("simplifiedTime: " + simplifiedTime);
+        String compiledDate = "The current time is: \n" + datePieces[0] + " at " + simplifiedTime;
+        displayTimeNow.setText(compiledDate);
         changeTimeText(null);
     }
 
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         String subs = thisTime.substring(0,thisTime.indexOf(":"));
                         int hour = Integer.parseInt(subs);
                         // check if the last two characters are "pm" AND it's not "12pm"
-                        String ampm = thisTime.substring(thisTime.length()-2, thisTime.length());
+                        String ampm = thisTime.substring(thisTime.length()-2);
                         if(ampm.compareTo(PM)==0 && hour != twelve){
                             hour += twelve; // if so, add 12 to value
                         } else if (ampm.compareTo(AM) == 0 && hour == twelve){
@@ -127,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
             if(timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
                     (timeOfDay.compareTo(thisDayTimes.get(i+1)) < 0
                             || thisDayTimes.get(i+1).compareTo(midnight) == 0)){
-                view.setText(" is OPEN until " + thisDayTimes.get(i+1));
+                view.setText("OPEN until " + toRegularTime(thisDayTimes.get(i+1)));
                 return;
             }
         }
         //if not open, on the current day, find the next open time
         if(timeOfDay.compareTo(thisDayTimes.get(0)) < 0){
-            view.setText(" is CLOSED. Will be open at: " + thisDayTimes.get(0));
+            view.setText("CLOSED until TODAY at: " + toRegularTime(thisDayTimes.get(0)));
             return;
         }
         for(int i=1; i<thisDayTimes.size(); i = i+2){
@@ -141,15 +146,45 @@ public class MainActivity extends AppCompatActivity {
                 if (timeOfDay.compareTo(thisDayTimes.get(i)) >= 0 &&
                         (timeOfDay.compareTo(thisDayTimes.get(i + 1)) < 0
                                 || thisDayTimes.get(i + 1).compareTo(midnight) == 0)) {
-                    view.setText(" is CLOSED. Will be open TODAY at: " + thisDayTimes.get(i + 1));
+                    view.setText("CLOSED until TODAY at: " + toRegularTime(thisDayTimes.get(i + 1)));
                     return;
                 }
             }
         }
         // if not open, and the next opening is on the next day
         ArrayList<String> nextDayTimes = schedule.get(day+1);
-        view.setText(" is CLOSED. Will be open TOMORROW at: " + nextDayTimes.get(0));
+        view.setText("CLOSED until TOMORROW at: " + toRegularTime(nextDayTimes.get(0)));
         return;
+    }
+
+    // parses a string in nextDayTimes into regular time
+    private String toRegularTime (String twentyfourTime){
+        String hourString = "";
+        // "17:00"
+        // if the string starts with a 0, remove it
+        if(twentyfourTime.charAt(0) == '0'){
+            twentyfourTime = twentyfourTime.substring(1);
+        }
+        // take first characters until ":", convert into integer
+        String subs = twentyfourTime.substring(0,twentyfourTime.indexOf(":"));
+        int hour = Integer.parseInt(subs);
+        // if that int > 12, convert
+        if(hour > twelve){
+            hour = hour-twelve; // subtract 12 from int
+            // add "pm" to end of
+            hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":")) + "pm";
+        } else if (hour == twelve){ // for noon
+            // add "pm" to end of
+            hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":")) + "pm";
+        } else {
+            // else add "am" to end of
+            hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":"));
+        }
+        if(hourString.charAt(0) == '0'){ // if midnight
+            hourString = "12" + hourString.substring(1) + "am";
+        }
+        System.out.println("hourString: " + hourString);
+        return hourString;
     }
 
     // view.getText().toString()+

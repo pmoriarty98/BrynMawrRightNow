@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,21 +12,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/currentTime"
+        android:textAllCaps="false"
+        android:textColor="#57C58B"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:id="@+id/BMCtoHAV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/BMCtoHAV"
+        android:textColor="#65ADE6"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.199" />
@@ -35,12 +45,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/HAVtoBMC"
+        android:textColor="#65ADE6"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
         android:id="@+id/nextHavBus"
@@ -73,12 +87,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/erdman"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextHavBus"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.194" />
 
     <TextView
         android:id="@+id/newdorm"
@@ -86,8 +104,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/newdorm"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/erdman" />
 
@@ -97,8 +119,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/uncommon"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newdorm" />
 
@@ -108,8 +134,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/carpenter"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/canaday" />
 
@@ -119,8 +149,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/canaday"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uncommon" />
 
@@ -130,8 +164,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/collier"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carpenter" />
 
@@ -141,8 +179,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/bookstore"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collier" />
 
@@ -152,8 +194,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/gym"
+        android:textColor="#57C58B"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookstore" />
 
@@ -231,7 +277,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:text="@string/TIME"
+        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/bookstore"
         app:layout_constraintTop_toBottomOf="@+id/collier" />
 
@@ -242,7 +288,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:text="@string/TIME"
+        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/gym"
         app:layout_constraintTop_toBottomOf="@+id/bookstore" />
 
