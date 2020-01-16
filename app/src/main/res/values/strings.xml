@@ -14,4 +14,5 @@
     <string name="bookstore">Bookstore </string>
     <string name="gym">Gym </string>
     <string name="TIME">TIME_GOES_HERE </string>
+    <string name="refresh">REFRESH </string>
 </resources>
