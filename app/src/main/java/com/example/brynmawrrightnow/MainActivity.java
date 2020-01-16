@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 // Mon: 0, Tue: 1, Wed: 2, Thur: 3, Fri: 4, Sat: 5, Sun: 6
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<ArrayList<String>> erdman = new ArrayList<>();
     ArrayList<ArrayList<String>> newdorm = new ArrayList<>();
     ArrayList<ArrayList<String>> gym = new ArrayList<>();
+    ArrayList<ArrayList<String>> BMCtoHAV = new ArrayList<>();
+    ArrayList<ArrayList<String>> HAVtoBMC = new ArrayList<>();
 
     //private static final String TAG = "TIME NOW";
 
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         erdman = newSchedule("Erdman.txt");
         newdorm = newSchedule("Newdorm.txt");
         gym = newSchedule("gym.txt");
+        BMCtoHAV = newScheduleBlueBus("BMCtoHC.txt");
+        HAVtoBMC = newScheduleBlueBus("HCtoBMC.txt");
+
+        // display the last time refreshed
         TextView displayTimeNow = (TextView) findViewById(R.id.currentTime);
         Date date = java.util.Calendar.getInstance().getTime();
         String timeText = "" + date;
@@ -109,6 +116,105 @@ public class MainActivity extends AppCompatActivity {
         //    System.out.println(thisSchedule.get(i));
         //}
         return thisSchedule;
+    }
+
+    private ArrayList<ArrayList<String>> newScheduleBlueBus (String filename){
+        AssetManager assetManager = getAssets();
+        ArrayList<ArrayList<String>> thisSchedule = new ArrayList<>();
+        for(int i = 0; i < 7; i++){
+            ArrayList<String> newArray = new ArrayList<>();
+            thisSchedule.add(newArray);
+        }
+        try {
+            InputStream inputStream = assetManager.open(filename);
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            int counter = 0;
+            while((line = in.readLine()) != null) {
+                String[] tokens = line.split("\\s", 0);
+                for (int i = 1; i<tokens.length; i++){
+                    String thisTime = tokens[i];
+                    System.out.println("thisTime: " + thisTime);
+                    if(thisTime.compareTo("closed") != 0){ // if closed, don't add anything
+                        // else
+                        // for each token convert into 24 time
+                        // take first characters until ":", convert into integer
+                        String subs = thisTime.substring(0,thisTime.indexOf(":"));
+                        int hour = Integer.parseInt(subs);
+                        // check if the last two characters are "pm" AND it's not "12pm"
+                        String ampm = thisTime.substring(thisTime.length()-2, thisTime.length());
+                        if(ampm.compareTo(PM)==0 && hour != twelve){
+                            hour += twelve; // if so, add 12 to value
+                        } else if (ampm.compareTo(AM) == 0 && hour == twelve){
+                            hour = 0; // midnight is later than 23:00
+                        }
+                        // turn back into string formatted "14:15" or such
+                        String hourString = "" + hour;
+                        if (hourString.length() == 1){
+                            hourString = "0" + hourString;
+                        }
+                        String finalTime = hourString + thisTime.substring(thisTime.indexOf(":"), thisTime.length()-2);
+                        //deal with cross midnight times
+                        if(finalTime.substring(0,2).compareTo("00")== 0 || finalTime.substring(0,2).compareTo("07") < 0) {
+                            thisSchedule.get((counter+1)%7).add(finalTime); //the time actually belongs to next day
+                        } else {
+                            thisSchedule.get(counter).add(finalTime);
+                        }
+                    }
+                }
+                counter++;
+            }
+        } catch (IOException e) {
+            Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        //sort the Monday times since cross midnights times on Sunday is appended at the end of Monday list
+        // which is the earliest bus on Monday
+        Collections.sort(thisSchedule.get(0));
+
+
+        //System.out.println("schedule formatted: ");
+        //for(int i = 0; i < thisSchedule.size(); i++){
+        //    System.out.println(thisSchedule.get(i));
+        //}
+        return thisSchedule;
+    }
+
+    public void DisplayNextBlueBus(TextView view, ArrayList<ArrayList<String>> schedule){
+        String[] timeDetails = timeNow().split("\\s", 0);
+        int day = Integer.parseInt(timeDetails[0]);
+        String timeOfDay = timeDetails[1];
+        ArrayList<String> thisDayTimes = schedule.get(day);
+        ArrayList<String> nextDayTimes = schedule.get((day+1)%7);
+        // return next blue bus
+        // next blue bus is on today
+        int counter = 0;
+        String result = ""; //store next 3 buses times
+        for(int i = 0; i < thisDayTimes.size(); i++){
+            if(timeOfDay.compareTo(thisDayTimes.get(i)) <= 0){
+                result = result + thisDayTimes.get(i)+ "\n";
+                counter++;
+                if(counter == 3){
+                    result = result.substring(0, result.length()-1);
+                    break;
+                }
+            }
+        }
+        //next bus is on next day
+        if(counter < 3){
+            for(int i = 0; i < nextDayTimes.size(); i++){
+                if(timeOfDay.compareTo(nextDayTimes.get(i)) <= 0){
+                    result = result + nextDayTimes.get(i)+ "\n";
+                    counter++;
+                    if(counter == 3){
+                        result = result.substring(0, result.length()-1);
+                        break;
+                    }
+                }
+            }
+        }
+        view.setText(result);
+
     }
 
     // isOpen(R.id.uncommon, uncommon);
@@ -197,6 +303,8 @@ public class MainActivity extends AppCompatActivity {
         TextView erdmanView = (TextView) findViewById(R.id.erdmanText);
         TextView newdormView = (TextView) findViewById(R.id.newdormText);
         TextView gymView = (TextView) findViewById(R.id.gymText);
+        TextView nextHavView = (TextView) findViewById(R.id.nextHavBus);
+        TextView nextBMCView = (TextView) findViewById(R.id.nextBMCBus);
 
         isOpen(uncommonView, uncommon);
         isOpen(bookstoreView, bookstore);
@@ -206,6 +314,8 @@ public class MainActivity extends AppCompatActivity {
         isOpen(erdmanView, erdman);
         isOpen(newdormView, newdorm);
         isOpen(gymView, gym);
+        DisplayNextBlueBus(nextBMCView,BMCtoHAV);
+        DisplayNextBlueBus(nextHavView,HAVtoBMC);
     }
 
     private String timeNow(){ // work for later: we only want the day of the week and time
