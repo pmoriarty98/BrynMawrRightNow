@@ -7,8 +7,6 @@ import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         String[] datePieces = timeText.split("\\s",0);
         // take the first five characters and regularize
         String simplifiedTime = toRegularTime(datePieces[3].substring(0,5));
-        System.out.println("simplifiedTime: " + simplifiedTime);
         String compiledDate = "The current time is:\n" + datePieces[0] + " at " + simplifiedTime;
         displayTimeNow.setText(compiledDate);
         changeTimeText(null);
@@ -86,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     //function to change text according to when it closes or when it opens again
     public void changeTimeText(View view){
         String ourTime = timeNow();
-        //System.out.println(ourTime);
         ArrayList<Boolean> opens = new ArrayList<>();
         TextView uncommonView = (TextView) findViewById(R.id.uncommonText);
         TextView bookstoreView = (TextView) findViewById(R.id.bookstoreText);
@@ -156,10 +152,6 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
             toast.show();
         }
-        //System.out.println("schedule formatted: ");
-        //for(int i = 0; i < thisSchedule.size(); i++){
-        //    System.out.println(thisSchedule.get(i));
-        //}
         return thisSchedule;
     }
 
@@ -179,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 String[] tokens = line.split("\\s", 0);
                 for (int i = 1; i<tokens.length; i++){
                     String thisTime = tokens[i];
-                    System.out.println("thisTime: " + thisTime);
                     if(thisTime.compareTo("closed") != 0){ // if closed, don't add anything
                         // else
                         // for each token convert into 24 time
@@ -216,12 +207,6 @@ public class MainActivity extends AppCompatActivity {
         //sort the Monday times since cross midnights times on Sunday is appended at the end of Monday list
         // which is the earliest bus on Monday
         Collections.sort(thisSchedule.get(0));
-
-
-        //System.out.println("schedule formatted: ");
-        //for(int i = 0; i < thisSchedule.size(); i++){
-        //    System.out.println(thisSchedule.get(i));
-        //}
         return thisSchedule;
     }
 
@@ -264,14 +249,9 @@ public class MainActivity extends AppCompatActivity {
 
     // isOpen(R.id.uncommon, uncommon);
     public void isOpen(TextView view, ArrayList<ArrayList<String>> schedule){
-        System.out.println("schedule formatted: ");
-        for(int i = 0; i < schedule.size(); i++){
-            System.out.println(schedule.get(i));
-        }
         String[] timeDetails = timeNow().split("\\s", 0);
         int day = Integer.parseInt(timeDetails[0]);
         String timeOfDay = timeDetails[1];
-        //System.out.println("timeOfDay: "+ timeOfDay);
         ArrayList<String> thisDayTimes = schedule.get(day);
         // for each pair of open-closed times, find if open or not
         for(int i = 0; i < thisDayTimes.size(); i = i+2){
@@ -329,11 +309,8 @@ public class MainActivity extends AppCompatActivity {
         if(hourString.charAt(0) == '0'){ // if midnight
             hourString = "12" + hourString.substring(1) + "am";
         }
-        System.out.println("hourString: " + hourString);
         return hourString;
     }
-
-    // view.getText().toString()+
 
     private String timeNow(){ // work for later: we only want the day of the week and time
 
