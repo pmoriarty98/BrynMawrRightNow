@@ -2,11 +2,15 @@ package com.example.brynmawrrightnow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +50,15 @@ public class MainActivity extends AppCompatActivity {
         setup();
     }
 
+    public void refresh(View view){
+        setup();
+    }
+
     private void setup() {
+        ImageView img = (ImageView)findViewById(R.id.lantern); // get appropriate image
+        Drawable myDrawable = getResources().getDrawable(R.drawable.lantern);
+        img.setImageDrawable(myDrawable);
+
         uncommon = newSchedule("uncommon.txt");
         bookstore = newSchedule("Bookstore.txt");
         canaday = newSchedule("Canaday.txt");
@@ -66,9 +78,37 @@ public class MainActivity extends AppCompatActivity {
         // take the first five characters and regularize
         String simplifiedTime = toRegularTime(datePieces[3].substring(0,5));
         System.out.println("simplifiedTime: " + simplifiedTime);
-        String compiledDate = "The current time is: \n" + datePieces[0] + " at " + simplifiedTime;
+        String compiledDate = "The current time is:\n" + datePieces[0] + " at " + simplifiedTime;
         displayTimeNow.setText(compiledDate);
         changeTimeText(null);
+    }
+
+    //function to change text according to when it closes or when it opens again
+    public void changeTimeText(View view){
+        String ourTime = timeNow();
+        //System.out.println(ourTime);
+        ArrayList<Boolean> opens = new ArrayList<>();
+        TextView uncommonView = (TextView) findViewById(R.id.uncommonText);
+        TextView bookstoreView = (TextView) findViewById(R.id.bookstoreText);
+        TextView canadayView = (TextView) findViewById(R.id.canadayText);
+        TextView carpenterView = (TextView) findViewById(R.id.carpenterText);
+        TextView collierView = (TextView) findViewById(R.id.collierText);
+        TextView erdmanView = (TextView) findViewById(R.id.erdmanText);
+        TextView newdormView = (TextView) findViewById(R.id.newdormText);
+        TextView gymView = (TextView) findViewById(R.id.gymText);
+        TextView nextHavView = (TextView) findViewById(R.id.nextHavBus);
+        TextView nextBMCView = (TextView) findViewById(R.id.nextBMCBus);
+
+        isOpen(uncommonView, uncommon);
+        isOpen(bookstoreView, bookstore);
+        isOpen(canadayView, canaday);
+        isOpen(carpenterView, carpenter);
+        isOpen(collierView, collier);
+        isOpen(erdmanView, erdman);
+        isOpen(newdormView, newdorm);
+        isOpen(gymView, gym);
+        DisplayNextBlueBus(nextBMCView,BMCtoHAV);
+        DisplayNextBlueBus(nextHavView,HAVtoBMC);
     }
 
     private ArrayList<ArrayList<String>> newSchedule (String filename){
@@ -284,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
             hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":")) + "pm";
         } else {
             // else add "am" to end of
-            hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":"));
+            hourString = "" + hour + twentyfourTime.substring(twentyfourTime.indexOf(":")) + "am";
         }
         if(hourString.charAt(0) == '0'){ // if midnight
             hourString = "12" + hourString.substring(1) + "am";
@@ -294,34 +334,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // view.getText().toString()+
-
-    //function to change text according to when it closes or when it opens again
-    public void changeTimeText(View view){
-        String ourTime = timeNow();
-        //System.out.println(ourTime);
-        ArrayList<Boolean> opens = new ArrayList<>();
-        TextView uncommonView = (TextView) findViewById(R.id.uncommonText);
-        TextView bookstoreView = (TextView) findViewById(R.id.bookstoreText);
-        TextView canadayView = (TextView) findViewById(R.id.canadayText);
-        TextView carpenterView = (TextView) findViewById(R.id.carpenterText);
-        TextView collierView = (TextView) findViewById(R.id.collierText);
-        TextView erdmanView = (TextView) findViewById(R.id.erdmanText);
-        TextView newdormView = (TextView) findViewById(R.id.newdormText);
-        TextView gymView = (TextView) findViewById(R.id.gymText);
-        TextView nextHavView = (TextView) findViewById(R.id.nextHavBus);
-        TextView nextBMCView = (TextView) findViewById(R.id.nextBMCBus);
-
-        isOpen(uncommonView, uncommon);
-        isOpen(bookstoreView, bookstore);
-        isOpen(canadayView, canaday);
-        isOpen(carpenterView, carpenter);
-        isOpen(collierView, collier);
-        isOpen(erdmanView, erdman);
-        isOpen(newdormView, newdorm);
-        isOpen(gymView, gym);
-        DisplayNextBlueBus(nextBMCView,BMCtoHAV);
-        DisplayNextBlueBus(nextHavView,HAVtoBMC);
-    }
 
     private String timeNow(){ // work for later: we only want the day of the week and time
 
@@ -355,9 +367,39 @@ public class MainActivity extends AppCompatActivity {
         // writes String in format Tues 14:45 -> "1 14:45"
     }
 
-    public void refresh(View view){
-        setup();
+    public void blueBusRedirect(View view){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://www.brynmawr.edu/transportation/blue-bus-bi-co"));
+        startActivity(viewIntent);
     }
 
+    public void diningHallRedirect(View view){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://www.brynmawr.edu/dining/menus-and-hours"));
+        startActivity(viewIntent);
+    }
+
+    public void libraryRedirect(View view){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://www.brynmawr.edu/lits/hours"));
+        startActivity(viewIntent);
+    }
+
+    public void bookstoreRedirect(View view){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://bookshop.brynmawr.edu"));
+        startActivity(viewIntent);
+    }
+
+    public void gymRedirect(View view){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("http://athletics.brynmawr.edu/information/facilities/fitnesscenterpoolhours"));
+        startActivity(viewIntent);
+    }
 
 }

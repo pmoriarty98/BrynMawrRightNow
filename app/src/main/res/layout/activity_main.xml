@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/currentTime"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/currentTime"
         android:textAllCaps="false"
@@ -28,6 +28,7 @@
         android:id="@+id/BMCtoHAV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="blueBusRedirect"
         android:text="@string/BMCtoHAV"
         android:textColor="#65ADE6"
         android:textSize="17sp"
@@ -44,6 +45,7 @@
         android:id="@+id/HAVtoBMC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="blueBusRedirect"
         android:text="@string/HAVtoBMC"
         android:textColor="#65ADE6"
         android:textSize="17sp"
@@ -58,26 +60,26 @@
 
     <TextView
         android:id="@+id/nextHavBus"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:text="@string/nextHAVbus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BMCtoHAV"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/nextBMCBus"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:text="@string/nextBMCbus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HAVtoBMC"
         app:layout_constraintVertical_bias="0.0" />
@@ -86,6 +88,7 @@
         android:id="@+id/erdman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="diningHallRedirect"
         android:text="@string/erdman"
         android:textColor="#57C58B"
         android:textSize="16sp"
@@ -93,23 +96,24 @@
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextHavBus"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintVertical_bias="0.22000003" />
 
     <TextView
         android:id="@+id/newdorm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="diningHallRedirect"
         android:text="@string/newdorm"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/erdman" />
 
@@ -118,13 +122,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="diningHallRedirect"
         android:text="@string/uncommon"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newdorm" />
 
@@ -133,13 +138,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="libraryRedirect"
         android:text="@string/carpenter"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/canaday" />
 
@@ -148,13 +154,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="libraryRedirect"
         android:text="@string/canaday"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uncommon" />
 
@@ -163,13 +170,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="libraryRedirect"
         android:text="@string/collier"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carpenter" />
 
@@ -178,13 +186,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="bookstoreRedirect"
         android:text="@string/bookstore"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collier" />
 
@@ -193,13 +202,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="gymRedirect"
         android:text="@string/gym"
         android:textColor="#57C58B"
         android:textSize="16sp"
         android:textStyle="bold|italic"
         app:fontFamily="sans-serif-smallcaps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookstore" />
 
@@ -207,13 +217,13 @@
         android:id="@+id/erdmanText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="@string/TIME"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/erdman"
         app:layout_constraintTop_toBottomOf="@+id/nextHavBus"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.217" />
 
     <TextView
         android:id="@+id/newdormText"
@@ -277,7 +287,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/TIME"
         app:layout_constraintStart_toEndOf="@+id/bookstore"
         app:layout_constraintTop_toBottomOf="@+id/collier" />
 
@@ -288,7 +298,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/TIME"
         app:layout_constraintStart_toEndOf="@+id/gym"
         app:layout_constraintTop_toBottomOf="@+id/bookstore" />
 
@@ -296,17 +306,42 @@
         android:id="@+id/refresh"
         android:layout_width="99dp"
         android:layout_height="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="52dp"
+        android:background="@color/buttonColor"
         android:clickable="true"
         android:onClick="refresh"
         android:text="@string/refresh"
-        android:textColor="#48959B"
+        android:textColor="#299EA5"
         android:textColorHint="#00F8F6F6"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/lantern"
+        android:layout_width="97dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32"
+        tools:srcCompat="@drawable/lantern" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/info"
+        android:textColor="#65ADE6"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
